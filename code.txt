@@ -1,0 +1,31 @@
+/*
+Conectarse, crear y verificar el ingreso de datos a la base de datos
+*/
+
+from pymongo import MongoClient
+#import pymongo
+
+try:
+    client = MongoClient()
+    db = client.pymongo_test
+    posts = db.posts
+
+    posts_data = {
+        'Title': 'Is MongoDB not running at startup my laptop?',
+        'Content': 'why is that?',
+        'Author': 'Neil'
+    }
+    #print(posts_data)
+
+    result = posts.insert_one(posts_data)
+    print('One insertion : {}'.format(result.inserted_id))
+    print('wow')
+
+except errors.ConnectionFailure as identifier:
+    print('Error en la conexion {}'.format(identifier))
+
+//--------------------------------------------------------------------
+/*
+
+*/
+//--------------------------------------------------------------------
